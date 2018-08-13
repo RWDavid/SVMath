@@ -1,0 +1,104 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{52pt}
+\rhead{David Choi}
+\lhead{Seneca Valley Math Club}
+
+\begin{document}
+
+\setcounter{section}{1}
+\section{Counting Techniques}
+
+\subsection{Concepts}
+
+\begin{itemize}
+    \item Casework can be used to split a problem into easier problems. Whenever a problem has many different possibilities, try to break the problem into several cases.
+    \item Sometimes, the outcomes which we don't want are easier to count that the outcomes we do want. In this case, we can subtract the undesired outcomes from the total set of outcomes. This technique is known as complementary counting.
+    \item When an outcome can be constructed through multiple steps, we can find the total number of outcomes by multiplying the possible outputs of each step together. This is constructive counting.
+    \item Often, problems involve restrictions that cause problems later on. It is generally best to deal with the most severe restrictions first.
+\end{itemize}
+
+\subsection{Review Problems}
+
+\begin{enumerate}
+    \item How many pairs of positive integers $(m, n)$ satisfy $m^2 + n < 30$? (Source: Introduction to Counting \& Probability)
+    \item How many positive integers less than $100$ can be written as the sum of two positive perfect cubes?
+    \item How many 4-letter permutations with at least one vowel can be constructed from the letters A, B, C, D, and E? (Source: Introduction to Counting \& Probability)
+    \item A palindrome is an integer that reads the same forward and backward, such as 3663. What percent of the palindromes between 100 and 500 contain at least one 5? (Source: MathCounts 2009 State Countdown)
+    \item How many ways can we put 3 math books and 5 English books on a shelf if all the math books must stay together and all the English books must also stay together? (The math books are all different and so are the English books.) (Source: Introduction to Counting \& Probability)
+\end{enumerate}
+
+\newpage
+\subsection{Review Problem Solutions}
+
+\begin{enumerate}
+    \item We proceed by casework. When $m=1$, we have $n < 29$, giving us 28 values for $n$. Similarly,
+
+        $$m=2, n < 26$$
+        $$m=3, n < 21$$
+        $$m=4, n < 14$$
+        $$m=5, n < 5.$$
+    This gives us an answer of $28+25+20+13+4=\boxed{92}$
+    \item Note that any perfect cubes must be lower than $5^3=125$. We proceed by casework.
+    \begin{itemize}
+        \item If our first perfect cube is $1^3$, then the other can be $1^3, 2^3, 3^3,$ or $4^3$.
+        \item If our first perfect cube is $2^3$, then the other can be $2^3, 3^3,$ or $4^3$. (Note that we avoid $1^3$ to avoid counting the same pair twice.)
+        \item If our first perfect cube is $3^3$, then the other can be $3^3$ or $4^3$.
+        \item If our first perfect cube is $4^3$, then there are no other cubes which we have not already counted.
+    \end{itemize}
+    Thus, our answer is $4+3+2=\boxed{9}$.
+    \item We can use complementary counting by counting the number of 4-letter permutations that contain no vowels. Since there are 3 consonants to choose from, we can form $3^4$ vowel-less permutations. Thus, our answer is $5^4-3^4 = \boxed{544}$.
+    \item Note that 5 cannot be the first or third digit, as that would create a number that is greater than 500. Thus, 5 must be the second digit. In this case, there are 4 palindromes between 100 and 500 that contain at least one 5, namely $151, 252, 353,$ and $454$.
+    The total number of palindromes can be constructively counted with $4$ options for the first and third digits (combined) and $10$ options for the second digit: $4 \times 10 = 40$. Thus, 4 out of 40 palindromes, or \boxed{\text{10 percent}}, contain at least one 5.
+    \item There are $3!$ ways to arrange the math books and $5!$ ways to arrange the English books. Additionally, we can either put the math books to the left or to the right of the English books. Thus, there are $3! \times 5! \times 2 = \boxed{1440}$ ways to arrange the books.
+\end{enumerate}
+
+\subsection{Challenge Problems}
+
+\begin{enumerate}
+    \item How many squares of any size can be formed by connecting dots in a $4 \times 4$ grid?
+    \item A math club has 20 members and 3 officers: President, Vice President, and Treasurer. However, one member, Ali, has a huge crush on Brenda, and won't be an officer unless she is one too. Brenda is unaware of Ali's affection and doesn't care if he is an officer or not; she's perfectly happy to be an officer even if Ali isn't one. In how many ways can the club choose its officers? (Source: Introduction to Counting \& Probability)
+    \item Derek's phone number, $336$ - $7624,$ has the property that the three-digit prefix, $336,$ equals the product of the last four digits, $7 \times 6 \times 2 \times 4.$ How many seven-digit phone numbers beginning with $336$ have this property? (Source: MathCounts 2006 State Sprint)
+    \item Each of four students hands in a homework paper. Later the teacher hands back the graded papers randomly, one to each of the students. In how many ways can the papers be handed back such that every student receives someone else's paper? The order in which the students receive their papers is irrelevant. (Source: MathCounts 2007 National Countdown)
+    \item How many positive, three-digit integers contain at least one $3$ as a digit but do not contain a $5$ as a digit? (Source: MathCounts 2010 National Sprint)
+\end{enumerate}
+
+\newpage
+\subsection{Challenge Problem Solutions}
+
+\begin{enumerate}
+    \item There are nine $1\times1$ squares, four $2\times2$ squares, one $3\times3$ square, four $\sqrt{2}\times\sqrt{2}$ squares, and two $\sqrt{5}\times\sqrt{5}$ squares, for a total of $9+4+1+4+2=\boxed{20}$ squares.
+    \item There are $20 \times 19 \times 18$ ways to choose the officers without restrictions.
+    
+    The cases that we have to exclude are those where Ali is an officer but Brenda is not. We can count the number of these cases through constructive counting.
+    
+    There are 3 choices for the office that Ali will hold.
+    
+    There are 18 choices for the first remaining office (since Alie is already chosen and we're not allowed to choose Brenda).
+    
+    There are 17 choices for the last remaining office.
+    
+    So there are $3 \times 18 \times 17$ total choices for the 3 officers, provided that Ali must be one of the three and Brenda cannot be on of the three.
+    
+    To answer the original question, we subtract our excluded cases from the total number of permutations:
+    $$(20\times19\times18) - (3\times18\times17) = \boxed{5922}.$$
+    \item We begin by factoring $336$. $336 = 2^4 \cdot 3 \cdot 7.$ Because we are looking for phone numbers, we want four single digits that will multiply to equal $336.$ Notice that $7$ cannot be multiplied by anything, because $7 \cdot 2$ is $14,$ which is already two digits. So, one of our digits is necessarily $7.$ $3$ can be multiplied by at most $2,$ and the highest power of $2$ that we can have is $2^3 = 8.$ Using these observations, it is fairly simple to come up with the following list of groups of digits whose product is $336:$ 
+    \begin{align*}
+    1, 6, 7, 8\\
+    2, 4, 6, 7\\
+    2, 3, 7, 8\\
+    3, 4, 4, 7
+    \end{align*} 
+    For the first three groups, there are $4! = 24$ possible rearrangements of the digits. For the last group, $4$ is repeated twice, so we must divide by $2$ to avoid overcounting, so there are $\frac{4!}{2} = 12$ possible rearrangements of the digits. Thus, there are $3 \cdot 24 + 12 = \boxed{84}$ possible phone numbers that can be constructed to have this property.
+    \item The first student can be handed any of 3 papers. Suppose the name of the person whose paper is given to that first student is ``Bob". Then Bob can be handed any of the remaining 3 papers. Now the remaining students can each only be handed one paper, so our answer is $3\cdot 3\cdot 1\cdot 1 = \boxed{9}$.
+    \item Let us consider the number of three-digit integers that do not contain $3$ and $5$ as digits; let this set be $S$. For any such number, there would be $7$ possible choices for the hundreds digit (excluding $0,3$, and $5$), and $8$ possible choices for each of the tens and ones digits. Thus, there are $7 \cdot 8 \cdot 8 = 448$ three-digit integers without a $3$ or $5$.
+
+    Now, we count the number of three-digit integers that just do not contain a $5$ as a digit; let this set be $T$. There would be $8$ possible choices for the hundreds digit, and $9$ for each of the others, giving $8 \cdot 9 \cdot 9 = 648$. By the complementary principle, the set of three-digit integers with at least one $3$ and no $5$s is the number of integers in $T$ but not $S$. There are $648 - 448 = \boxed{200}$ such numbers.
+\end{enumerate}
+
+\end{document}

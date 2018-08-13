@@ -1,0 +1,83 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{52pt}
+\rhead{David Choi}
+\lhead{Seneca Valley Math Club}
+
+\begin{document}
+
+\section{Counting is Easy}
+
+\subsection{Concepts}
+
+\begin{itemize}
+    \item Given two positive integers $a$ and $b$ such that $b\ge a$, there are $b-a+1$ integers between $a$ and $b$, inclusive.
+    \item The total number of ways that event \textbf{A} and event \textbf{B} can occur is:
+    \begin{center}
+        (number of ways event \textbf{A} can occur) $\times$ (number of ways event \textbf{B} can occur).
+    \end{center}
+    \item We can arrange $n$ items in $n!$ ways, where 
+    $$n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1.$$
+    \item We can arrange $k$ items from a group of $n$ items in $P(n,k)$ ways, where
+    $$P(n,k) = n \times (n-1) \times \cdots \times (n-k+2) \times (n-k+1) = \frac{n!}{(n-k)!}.$$
+    This is known as permutation.
+\end{itemize}
+
+\subsection{Review Problems}
+
+\begin{enumerate}
+    \item How many integers are in the sequence $13, 14, 15,\ldots, 113$?
+    \item How many integers are in the sequence $5, 9, 13,\ldots, 657$?
+    \item A phone has a password mechanism that uses the digits 0 through 9. If a password consists
+    of four digits, where each digit may be used more than once, how many distinct passwords exist?
+    \item The Seneca Valley Math Club has 12 members. How many ways can the club assign a President,
+    a Vice President, and a Treasurer, where each member may only hold one position?
+\end{enumerate}
+
+\newpage
+\subsection{Review Problem Solutions}
+
+\begin{enumerate}
+    \item If we subtract $12$ from each term in the sequence, we end up with the sequence
+    $$1, 2, 3,\ldots,101.$$
+    Because this new sequence contains the same number of terms as the original sequence, it suffices
+    to count the number of terms in the new sequence. Counting the terms in our new sequence gives us an answer of $\boxed{101}$.
+    
+    Alternatively, we can use the method described in \textbf{1.1 Concepts}:
+    $$113 - 13 + 1 = \boxed{101}.$$
+    \item Subtracting $1$ from each term and then dividing by $4$ generates the sequence
+    $$1, 2, 3,\ldots, 164.$$
+    Clearly, this new sequence has $164$ terms, so our answer is $\boxed{164}$.
+    \item We have 10 options for our first digit, 10 options for our second digit, and so on. Thus, our answer is
+    $$10 \times 10 \times 10 \times 10 = 10^4 = \boxed{10000}.$$
+    \item We can assign the position of President to one of the 12 members. We then can assign the position of Vice President to one of 11 remaining members. Finally, we can assign the position of Treasurer to one of the 10 remaining members. This gives a total of $12 \times 11 \times 10 = \boxed{1320}$ ways to assign every role.
+\end{enumerate}
+
+\subsection{Challenge Problems}
+
+\begin{enumerate}
+    \item How many 3-digit numbers are perfect squares?
+    \item (a) How many ways can you distinctly arrange the letters of \textbf{DAVIS}?\\
+    (b) How many ways can you distinctly arrange the letters of \textbf{DAVID}?
+    \item There are 6 books on a shelf. The books are colored red, green, blue, yellow, purple, and pink. How many ways can you arrange the books on the shelf such that the red and green books are together?
+    \item Seven superheroes visit the local Superhero Convention. Each superhero shakes hands with all the other superheroes exactly once. How many handshakes take place?
+\end{enumerate}
+
+\newpage
+\subsection{Challenge Problem Solutions}
+
+\begin{enumerate}
+    \item The smallest 3-digit perfect square is $10^2=100$. The largest 3-digit perfect square is $31^2=961$. Naturally, all perfect squares in between $10^2$ and $31^2$ will also be 3-digit perfect squares. Thus, we have $31-10+1 = \boxed{22}$ 3-digit perfect squares.
+    \item (a) There are $5!=\boxed{120}$ ways to permute 5 distinct letters.
+    
+    (b) If the two `D's were distinct from each other and the rest of the letters, then there would be $5!=120$ ways to permute the letters. However, there are two letter `D's in every arrangement of \textbf{DAVID}, so every arrangement will have been counted twice using permutation. Thus, we divide by 2, giving us an answer of $\boxed{60}$.
+    \item We can think of the red and green books as a single book. Then, there are $5!=120$ ways to arrange the 5 books. Then, we can choose whether to put the red book to the left or to the right of the green book. This gives us $120\times2=\boxed{240}$ ways to arrange the books.
+    \item Superhero A can shake hands with 6 other superheroes. Similarly, superhero B can shake hands with 6 other superheroes, and so on. This leads to an initial answer of $6+6+6+6+6+6+6=42$ handshakes. However, this method ends up counting each handshake twice, since every handshake always occurs between two people. Thus, we divide by 2, giving us an answer of $\boxed{21}$ handshakes.
+\end{enumerate}
+
+\end{document}

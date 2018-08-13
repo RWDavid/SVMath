@@ -1,0 +1,104 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{52pt}
+\rhead{David Choi}
+\lhead{Seneca Valley Math Club}
+
+\begin{document}
+
+\setcounter{section}{2}
+\section{Overcounting}
+
+\subsection{Concepts}
+
+\begin{itemize}
+    \item Often, the best way to count a set of items is to deliberately overcount the number of items, and then correct for our overcounting. This is also called ``strategic overcounting."
+    \item Counting unordered pairs of items is easy: we just count the number of permutations of 2 items from our group, and then divide by 2 because we've counted each pair twice.
+    \item The sum of the first $n$ positive integers is $\frac{n(n+1)}{2}$.
+    \item If we are counting in a situation where there are one or more symmetries, then we typically first overcount where we ignore the symmetry, and then divide to account for the symmetry.
+\end{itemize}
+
+\subsection{Review Problems}
+
+\begin{enumerate}
+    \item Derive the formula for the sum of the first $n$ positive integers.
+    \item How many distinct arrangements are there of letters in the word \textbf{POLYGON}?
+    \item A round-robin tennis tournament consists of each player playing every other player exactly once. How many matches will be held during an 8-person round-robin tennis tournament? (Source: Introduction to Counting \& Probability)
+    \item I have twenty balls numbered 1 through 20 in a bin. In how many ways can I select 2 balls if the order in which I draw them doesn't matter? (Source: Introduction to Counting \& Probability)
+    \item In how many different ways can 5 people be seated at a round table? Two seating arrangements are considered the same if, for each person, the person to his or her left is the same in both arrangements. In other words, the two arrangements are equivalent through a single rotation.
+\end{enumerate}
+
+\newpage
+\subsection{Review Problem Solutions}
+
+\begin{enumerate}
+    \item Let's write
+    $$S=1+2+\cdots+(n-1)+n.$$
+    Note that this is just a notational shorthand for the sum of the first $n$ positive integers, and does not rule out the possibility that $n=1$ or $n=2$.
+    
+    We can, of course, just as easily write S in the reverse order:
+    $$S = n+(n-1)+\cdots+2+1.$$
+    This may seem like a useless thing to do, but watch what happens when we add them together:
+    
+    \begin{center}
+    \begin{tabular}{cccccccccccc}
+          & $S$ & = & 1 & + & 2 & + & $\cdots$ & + & $n-1$ & + & $n$ \\
+        + & $S$ & = & $n$ & + & $n-1$ & + & $\cdots$ & + & $2$ & + & $1$ \\
+        \hline
+          & $2S$ & = & $(n+1)$ & + & $(n+1)$ & + & $\cdots$ & + & $(n+1)$ & + & $(n+1)$ \\
+    \end{tabular}
+    \end{center}
+    
+    That last line has $n$ copies of $n+1$, and hence
+    $$2S=n(n+1).$$
+    So, we divide by 2 to get
+    $$S = 1 + 2 + \cdots + (n-1) + n = \frac{n(n+1)}{2}.$$
+    \item Suppose the two `O's are distinct. Then, there are $7!$ ways to arrange the letters. However, in every arrangement, there are two `O's. To account for the redundancy caused by the duplicate letters, we divide by $2!$. Thus, our answer is $7!/2!=\boxed{2520}$.
+    \item Each player plays 7 matches, one against each of the other 7 players. So what's wrong with the following reasoning?
+    \begin{itemize}
+        \item ``Each of the eight players plays 7 games, so there are $8\times7=56$ total games played."
+    \end{itemize}
+    Suppose two of the players are Alice and Bob. Among Alice's 7 matches is a match against Bob. Among Bob's 7 matches is a match against Alice. When we count the total number of matches as $8\times7$, the match between Alice and Bob is counted twice, once for Alice and once for Bob.
+    
+    Therefore, since $8\times7 = 56$ counts each match twice, we must divide this total by 2 to get the total number of matches. Hence the number of matches in an 8-player round-robin tournament is $\frac{8\times7}{2}=\boxed{28}$.
+    
+    Alternatively, we can note that Alice plays 7 matches, Bob plays 6 matches (excluding Alice), Carol plays 5 matches (excluding both Alice and Bob), and so on. This gives us a total of $7+6+\cdots+2+1=\frac{7\times8}{2}=\boxed{28}$.
+    \item There are 20 balls to choose from for the first draw and 19 balls to choose from for the second draw. This gives us a total of $20\times19=380$ total ways to select two balls. However, the order in which we select the balls doesn't matter. For example, we could have drawn ball \#3 first and ball \#5 second, or vice-versa. To account for this, we divide by 2, giving us an answer of $\boxed{190}$.
+    \item If the 6 people were sitting in a row, rather than around a table, there would be $6!$ arrangements. But this is clearly an overcounting, since several different row arrangements correspond to the same round table arrangement. The reason for this is that our problem has \textbf{symmetry}: each arrangement can be rotated 6 ways (one of them being no rotation) to make the other arrangements. Hence, when we put our $6!$ arrangements of $ABCDEF$ (each letter representing a person) in a circle, we count each circular arrangement 6 times, once for each rotation.
+    
+    Therefore, we must divide our initial overcount of $6!$ by 6, to account for the fact that there are 6 row arrangements corresponding to each circular arrangement. So our answer is that there are $6!/6 = 5!=\boxed{120}$ ways to arrange the 6 people around the table.
+    
+    Alternatively, we can solve this problem using a constructive counting. Imagine we first place person $A$. Since all rotations of the same seating are considered identical, we really don't have any choice for where to put person $A$, since all possible placements are the same under rotation.
+    
+    Now we place the rest of the people in the usual way. There are 5 choices for where to place person $B$, 4 remaining choices for where to place person $C$, etc,. for a total of $5\times4\times3\times2\times1=5!=\boxed{120}$ possible seatings.
+\end{enumerate}
+
+\subsection{Challenge Problems}
+
+\begin{enumerate}
+    \item A regular polygon is a polygon in which every angle and side are equal. A \textit{diagonal} of a regular polygon is a line segment which connects two non-adjacent vertices. Find a formula for the number of diagonals of a regular polygon with $n$ sides, where $n$ is any positive integer greater than 2.
+    \item How many distinct triangles can be formed by selecting three vertices of a regular octagon? (Triangles with different vertices are considered distinct even if they are congruent.) (Source: AoPS Staff)
+    \item I want to take a picture of my six friends standing in two rows of three. How many different photos can I take if the tallest person must stand in the back row, the shortest person must stand in the front row, and two of my friends are identical twins whom I can't tell apart? (The identical twins are neither the tallest nor the shortest.) (Source: AoPS Staff)
+    \item In how many distinct ways can 4 keys be placed on a keychain? Two arrangements are not considered different if the keys are in the same order (or can be made to be in the same order without taking the keys off the chain).
+\end{enumerate}
+
+\newpage
+\subsection{Challenge Problem Solutions}
+
+\begin{enumerate}
+    \item A regular polygon with $n$ sides has $n$ vertices. Each vertex can connect to $n-1$ other vertices, so the total pairs of vertices is $$\frac{n(n-1)}{2}.$$ (We divide by 2 because each pair is counted twice.) However, $n$ of these pairs correspond to edges of the polygon rather than diagonals, so we subtract these from our count. Thus, the number of diagonals in a regular polygon with $n$ sides is $$\boxed{\frac{n(n-1)}{2} - n}.$$
+    
+    Alternatively, we could note that each of the $n$ vertices can form a diagonal from $n-3$ other vertices (excluding itself and its two adjacent vertices). Thus, there are $$\boxed{\frac{n(n-3)}{2}}$$ diagonals in a regular polygon with $n$ sides.
+    \item There are 8 options for the first vertex, 7 for the second, and 6 for the last one. However, each triangle is counted six times, since any of its three vertices can be chosen as the first vertex and either of the other two can be chosen as the second vertex. Thus the answer is not $8\times7\times6=336$ but rather $\frac{8\times7\times6}{3\times2}=\boxed{56}$.
+    \item There are three places to put the tallest person, and three places to put the shortest person. After they have been placed, there are 4! ways to arrange the other people, but I must divide by 2 because I can't distinguish pictures where the twins are switched. Overall, there are $3\cdot 3\cdot 4! / 2=\boxed{108}$ different pictures I can take.
+    \item There are $4!$ ways to arrange the keys in a row. But each circular arrangement corresponds to 4 different row arrangements. So after taking into account the rotational symmetry, we have $4!/4=3!$ ways to arrange the keys on a circular ring.
+    
+    But there's more symmetry! We can flip a keychain over, creating an arrangement that is not a rotation of the original arrangement. However, this is still not considered a new arrangement since we never took any keys off the chain. Thus, we have to divide by 2, giving us a final answer of $3!/2=\boxed{3}$ arrangements.
+\end{enumerate}
+
+\end{document}
