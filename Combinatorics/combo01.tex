@@ -62,6 +62,12 @@
 
 \begin{enumerate}
     \item How many 3-digit numbers are perfect squares?
+    \item The positive five-digit integers that use each of the digits 1, 2, 3, 4 and 5 exactly once are ordered from least to greatest. What is the $50^{\text{th}}$ integer in the list?
+    \item How many multiples of $9^3$ are greater than $9^4$ and less than $9^5$? (Source: MathCounts 2004 Workout 6)
+    \item Elodie is putting on a fashion show and has five fabulous outfits for her five fabulous fashion models. However, on the day of the show, two of the outfits were ruined in an unfortunate permanent marker incident. Regardless, the show must go on and the remaining outfits will be presented. If each outfit can only be worn by one model and there is no time for any model to wear more than one dress, how many different shows can Elodie put on? (Note: Two shows are considered the same if they contain the same models wearing the same dresses.)
+    \item How many different rational numbers between 1/1000 and 1000 can be written either as a power of 2 or as a power of 3, where the exponent is a (possibly negative) integer?
+    \item How many of the factorials from 1! to 100! are divisible by 9? (Source: Introduction to Counting \& Probability Chapter 1)
+    \item License plates from different states follow different alpha-numeric formats, which dictate which characters of a plate must be letters and which must be numbers. Florida has license plates with an alpha-numeric format of 4 letters followed by 2 digits. North Dakota, on the other hand, has a different format of 3 letters followed by 3 digits. Assuming all 10 digits are equally likely to appear in the numeric positions, and all 26 letters are equally likely to appear in the alpha positions, how many more license plates can Florida issue than North Dakota?
     \item (a) How many ways can you distinctly arrange the letters of \textbf{DAVIS}?\\
     (b) How many ways can you distinctly arrange the letters of \textbf{DAVID}?
     \item There are 6 books on a shelf. The books are colored red, green, blue, yellow, purple, and pink. How many ways can you arrange the books on the shelf such that the red and green books are together?
@@ -73,6 +79,18 @@
 
 \begin{enumerate}
     \item The smallest 3-digit perfect square is $10^2=100$. The largest 3-digit perfect square is $31^2=961$. Naturally, all perfect squares in between $10^2$ and $31^2$ will also be 3-digit perfect squares. Thus, we have $31-10+1 = \boxed{22}$ 3-digit perfect squares.
+    \item We start with the numbers that start with 1. There are 4 ways to pick the next digit, then 3 ways to pick the third digit, 2 ways to pick the fourth, and 1 to pick the last. Therefore, there are $4\cdot 3\cdot 2\cdot 1=24$ integers with 1 as the first digit. Similarly, another 24 have 2 as the first digit. That's 48 numbers so far, so we want the second smallest number that starts with 3. The smallest is 31245, and the next smallest is $\boxed{31254}$.
+    \item Since $9^4=9(9^3)$ and $9^5=9^2\cdot9^3=81(9^3)$, we must count the number of integers between 10 and 80, inclusive. That number is $80-10+1=71$, so there are $\boxed{71}$ multiples of $9^3$ greater than $9^4$ and less than $9^5$.
+    \item Since two of the outfits are ruined, we only have three outfits. There are five models available for the first outfit, four models available for the second outfit, and three models available for the third outfit. Therefore, there are $5 \cdot 4 \cdot 3 = \boxed{60}$ ways in which the models can be matched to the outfits.
+    \item First we count the powers of $2$. We can compute $2^9=512$ and $2^{10}=1024$, so the largest power of $2$ which is smaller than $1000$ is $2^9$. Remembering that $2^{-n}$ is defined as $\dfrac{1}{2^n}$, we can see that the smallest power of $2$ which is larger than $\dfrac{1}{1000}$ is $2^{-9}$. Thus, we have the following list of powers of $2$:
+    $$2^{-9}, 2^{-8}, 2^{-7}, 2^{-6}, 2^{-5}, 2^{-4}, 2^{-3}, 2^{-2}, 2^{-1}, 2^0, 2^1, 2^2, 2^3, 2^4, 2^5, 2^6, 2^7, 2^8, 2^9.$$
+    There are $19$ numbers in this list ($9$ with negative exponents, $9$ with positive exponents, and one more -- $2^0$).
+
+    We can count powers of $3$ in a similar way. The largest power of $3$ smaller than $1000$ is $3^6 = 729$. The smallest power of $3$ larger than $\dfrac{1}{1000}$ is therefore $3^{-6}$, or $\dfrac{1}{729}$. So we have these powers of $3$: $$3^{-6}, 3^{-5}, 3^{-4}, 3^{-3}, 3^{-2}, 3^{-1}, 3^0, 3^1, 3^2, 3^3, 3^4, 3^5, 3^6.$$ We don't want to count $3^0$ again, though, because $3^0$ is $1$, which we already counted as $2^0$! There are $12$ other numbers in our list ($6$ with negative exponents and $6$ with positive exponents).
+    
+    We don't have to worry about any other duplication between the lists, since $\allowbreak 2^1,2^2,2^3,\allowbreak \ldots,2^8,2^9$ are all even and $\allowbreak 3^1,3^2,3^3,\allowbreak 3^4,3^5,3^6$ are all odd. So, we have $19+12 = \boxed{31}$ different numbers in our two lists.
+    \item To have 9 as a factor, $n!$ must have two factors of 3. The first such $n$ for which this is true is 6, since  $6! = \textbf{6} \times 5 \times 4 \times \textbf{3} \times 2 \times 1$. Since 9 is a factor of $6!$ and $6!$ is a factor of $n!$ for all $n \ge 6$, the numbers $6!, 7!, 8!, \ldots, 99!, 100!$ are all divisible by 9. There are $100 - 6 + 1 = \boxed{95}$ numbers in that list.
+    \item Florida issues license plates in which the first four are filled with letters, and the last two are filled with digits. Thus, there are $26^4 \cdot 10^2$ Florida license plates possible. North Dakota, however, issues license plates in which the first three slots are filled with letters and the last three slots are filled with digits. There are thus $26^3 \cdot 10^3$ possible North Dakota license plates. Multiplying these out and taking the difference yields an answer of $\boxed{28121600}$.
     \item (a) There are $5!=\boxed{120}$ ways to permute 5 distinct letters.
     
     (b) If the two `D's were distinct from each other and the rest of the letters, then there would be $5!=120$ ways to permute the letters. However, there are two letter `D's in every arrangement of \textbf{DAVID}, so every arrangement will have been counted twice using permutation. Thus, we divide by 2, giving us an answer of $\boxed{60}$.
