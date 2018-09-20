@@ -43,7 +43,7 @@
         $$m=3, n < 21$$
         $$m=4, n < 14$$
         $$m=5, n < 5.$$
-    This gives us an answer of $28+25+20+13+4=\boxed{92}$
+    This gives us an answer of $28+25+20+13+4=\boxed{90}$
     \item Note that any perfect cubes must be lower than $5^3=125$. We proceed by casework.
     \begin{itemize}
         \item If our first perfect cube is $1^3$, then the other can be $1^3, 2^3, 3^3,$ or $4^3$.
@@ -64,8 +64,10 @@
     \item How many squares of any size can be formed by connecting dots in a $4 \times 4$ grid?
     \item A math club has 20 members and 3 officers: President, Vice President, and Treasurer. However, one member, Ali, has a huge crush on Brenda, and won't be an officer unless she is one too. Brenda is unaware of Ali's affection and doesn't care if he is an officer or not; she's perfectly happy to be an officer even if Ali isn't one. In how many ways can the club choose its officers? (Source: Introduction to Counting \& Probability)
     \item Derek's phone number, $336$ - $7624,$ has the property that the three-digit prefix, $336,$ equals the product of the last four digits, $7 \times 6 \times 2 \times 4.$ How many seven-digit phone numbers beginning with $336$ have this property? (Source: MathCounts 2006 State Sprint)
+    \item The $n$ members of a committee are numbered 1 through $n$. One of the members is designated as the ``Grand Pooh-Bah." The $n$ members sit in a row of $n$ chairs, but no member with a number greater than the Grand Pooh-Bah may sit in the seat to the immediate right of the Grand Pooh-Bah. Suppose that the Grand Pooh-Bah is member number $p$, where $1 \le p \le n$. Find a formula, in terms of $n$ and $p$, for the number of ways for the committee to sit. (Source: MathCounts)
     \item Each of four students hands in a homework paper. Later the teacher hands back the graded papers randomly, one to each of the students. In how many ways can the papers be handed back such that every student receives someone else's paper? The order in which the students receive their papers is irrelevant. (Source: MathCounts 2007 National Countdown)
     \item How many positive, three-digit integers contain at least one $3$ as a digit but do not contain a $5$ as a digit? (Source: MathCounts 2010 National Sprint)
+    \item Suppose we form all $k$-digit palindromes that consist only of 8's and 9's such that there is at least one of each digit. What is the smallest value of $k$ such that there are at least 2004 numbers in the list? (Source: ARML)
 \end{enumerate}
 
 \newpage
@@ -95,10 +97,24 @@
     3, 4, 4, 7
     \end{align*} 
     For the first three groups, there are $4! = 24$ possible rearrangements of the digits. For the last group, $4$ is repeated twice, so we must divide by $2$ to avoid overcounting, so there are $\frac{4!}{2} = 12$ possible rearrangements of the digits. Thus, there are $3 \cdot 24 + 12 = \boxed{84}$ possible phone numbers that can be constructed to have this property.
+    \item First, we choose the position that the Grand Pooh-Bah sits in. There are two cases:
+    
+    \quad \textit{Case 1: Person p sits at the far right.} There is no further restriction, and the other $n-1$ members can sit in $(n-1)!$ ways.
+    
+    \quad \textit{Case 2: Person p sits anywhere other than the far right.} There are $n-1$ choices for where person $p$ sits, and $p-1$ choices for the person who sits to her immediate right (since it must be one of $1, 2, 3,\ldots,p-1)$. Then the remaining $n-2$ people can sit in the remaining seats in $(n-2)!$ ways.
+    
+    So the total number of seatings is $(n-1)! + (n-1)(p-1)(n-2)!$, which simplifies to $\boxed{p(n-1)!}$.
     \item The first student can be handed any of 3 papers. Suppose the name of the person whose paper is given to that first student is ``Bob". Then Bob can be handed any of the remaining 3 papers. Now the remaining students can each only be handed one paper, so our answer is $3\cdot 3\cdot 1\cdot 1 = \boxed{9}$.
     \item Let us consider the number of three-digit integers that do not contain $3$ and $5$ as digits; let this set be $S$. For any such number, there would be $7$ possible choices for the hundreds digit (excluding $0,3$, and $5$), and $8$ possible choices for each of the tens and ones digits. Thus, there are $7 \cdot 8 \cdot 8 = 448$ three-digit integers without a $3$ or $5$.
 
     Now, we count the number of three-digit integers that just do not contain a $5$ as a digit; let this set be $T$. There would be $8$ possible choices for the hundreds digit, and $9$ for each of the others, giving $8 \cdot 9 \cdot 9 = 648$. By the complementary principle, the set of three-digit integers with at least one $3$ and no $5$s is the number of integers in $T$ but not $S$. There are $648 - 448 = \boxed{200}$ such numbers.
+    \item If $k$ is even, then the first $\frac{k}{2}$ digits determine the palindrome. There are two choices for each digit, so there are $2^{\frac{k}{2}}$ palindromes of length $k$.
+    
+    If $k$ is odd, then the first $\frac{k+1}{2}$ digits determine the palindrome. Again, there are two choices for each digit, so there are $2^{\frac{k+1}{2}}$ palindromes of length $k$. Note that this is the same as the number of palindromes of length $k+1$.
+    
+    But, we must also exclude the 2 palindromes that don't have at least one 8 and at least one 9. So we are looking for the smallest odd value of $k$ such that $2^\frac{k+1}{2} - 2 \ge 2004$.
+    
+    We know that $2^{10}-2=1022$ and $2^{11}-2 = 2046$, so we must have $\frac{k+1}{2} \ge 11$, and the smallest such k is $\boxed{21}$.
 \end{enumerate}
 
 \end{document}
